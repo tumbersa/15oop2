@@ -14,7 +14,22 @@ public:
 	void setNext(dlist&);
 	void setPrev(dlist&);
 	double getInfo();
-	dlist* 
-
+	dlist* getNext();
+	dlist* getPrev();
+	dlist& operator= (dlist&);
+	dlist operator+(dlist&);
+	dlist operator-(dlist&);
+	dlist operator*(dlist&);
+	dlist operator/(dlist&);
+	bool operator==(dlist&);
+	bool operator!=(dlist&);
+	bool operator<(dlist&);
+	bool operator>(dlist&);
+	bool operator>=(dlist&);
+	bool operator<=(dlist&);
+	dlist& operator+=(dlist&);
+	dlist& operator-=(dlist&);
+	dlist& operator*=(dlist&);
+	dlist& operator/=(dlist&);
 };
 
