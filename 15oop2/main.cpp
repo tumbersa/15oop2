@@ -96,6 +96,11 @@ int main()
 	std::cout << "l1>=l1 ";
 	if (l1 >= l1) std::cout << 1 << std::endl; else std::cout << 0 << std::endl;
 	//___________________________________________________
-
+	std::cout << "Проверка оператора << \n";
+	std::cout <<"l2 " << l2;
+	std::cout << "Проверка оператора >> \n";
+	List l6;
+	std::cin >> l6;
+	std::cout << "l6 " << l6;
 	return 0;
 }

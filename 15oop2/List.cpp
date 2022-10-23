@@ -1,5 +1,5 @@
 #include "List.h"
-#include <fstream>
+#include <iostream>
 /*Конструкторы*/
 List::List()
 {
@@ -231,11 +231,67 @@ bool List::operator>=(const List& other) {
 	return f;
 }
 //побитовый сдвиг, ввод и вывод
-//ostream& operator<<(ostream& os, const List& obj) {
-//	os << obj.print();
-//
-//	return os;
-//}
+std::ostream& operator<<(std::ostream& out, List& obj) {
+	if (obj.isEmpty()) {
+		out << "error";
+		return out;
+	}
+	else {
+		out << "list: ";
+		Node* temp = obj.head;
+		while (temp) {
+			out << temp->info << " ";
+			temp = temp->next;
+		}
+		out << "\n";
+	}
+
+	return out;
+}
+std::istream& operator>>(std::istream& in, List& obj) {
+	int k = 0, x = 0;
+	std::cout << "Enter the number of elements: "; std::cin >> k;
+	if (k > 0)
+	{
+		std::cout << "Complete the list : \n";
+		in >> obj.head->info;
+		for (int i = 0; i < k - 1; ++i) {
+			std::cout << obj;
+			in >> x;
+			if (obj.head->info > x) {
+				Node* q = new Node(x);
+				q->next = obj.head;
+				obj.head->prev = q;
+				obj.head = q;
+			}
+			if (obj.head->info < x) {
+				Node* temp = obj.head;
+				Node* q = new Node(x);
+				while (x > temp->info && temp->next != nullptr) {
+					temp = temp->next;
+				}
+				if (temp->prev == nullptr) {
+					temp->next = q;
+					q->prev = temp;
+				}
+				else
+					if (temp->prev->info != x && temp->info != x) {
+					if (x > temp->info) {
+						temp->next = q;
+						q->prev = temp;
+					}
+					else {
+						temp->prev->next = q;
+						q->prev = temp->prev;
+						temp->prev = q;
+						q->next = temp;
+					}
+				}
+			}
+		}
+	}
+	return in;
+}
 //-------------------------------------------------------
 /*Инициализация*/
 void List::initList(int x)

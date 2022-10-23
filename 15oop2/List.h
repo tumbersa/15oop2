@@ -1,6 +1,6 @@
 #include "Node.h"
 #include <iostream>
-#include <fstream>
+
 class List
 {
 public:
@@ -23,7 +23,8 @@ public:
 	bool operator<(const List& other);
 	bool operator<=(const List& other);
 	bool operator>=(const List& other);
-	//ostream& operator<<(ostream& os, const List& rational);
+	friend std::ostream& operator<<(std::ostream& out, List& obj);
+	friend std::istream& operator>>(std::istream& in, List& obj);
     void initList(int x);
 	void add(int x);
 	bool isEmpty();
